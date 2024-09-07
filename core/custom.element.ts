@@ -13,6 +13,8 @@ export class CustomElement extends HTMLElement {
   
   this.templateRender();
   EventListenerResolver(this);
+  
+  this.shadow.dispatchEvent(new CustomEvent("ready-event", {}));
  }
  
  attributeChangedCallback(attr, prev, next) {

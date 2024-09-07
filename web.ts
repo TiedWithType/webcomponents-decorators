@@ -4,3 +4,5 @@ export * from "./core/events";
 export * from "./core/input";
 export * from "./core/template";
 export * from "./core/stylesheet";
+export * from "./core/service";
+export * from "./core/module";

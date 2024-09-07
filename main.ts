@@ -1,18 +1,39 @@
-import { WebComponent, CustomElement, Input, EventListener, template, stylesheet } from "./web";
+import { WebComponent, CustomElement, Input, EventListener, template, stylesheet, Service, Module } from "./web";
 
-@WebComponent("app-title") class AppTitle extends CustomElement {
- @template() appTemplate() {
-  return `<h1>App title</h1>`
- }
+import { AppTitle } from "./app/app-title";
+
+@Service() class service {
+ static fallback = "./fallback.jpg";
+ url = "https://picsum.photos/800";
 }
 
 @WebComponent("app-image") class AppImage extends CustomElement {
- @Input() src = "default";
+ @Input() src = service.fallback;
+ _service = new service();
+ 
+ isValid(src, cb) {
+  const img = new Image();
+  
+  img.onload = () => cb(true)
+  img.onerror = () => cb(false)
+  
+  img.src = src;
+ }
+ 
+ @EventListener("ready-event") readyEvent() {
+  this._service.subscribe(x => {
+   this.isValid(x, state => { state 
+    ? (this.src = x)
+    : (this.src = service.fallback)
+   })
+  });
+ }
  
  @stylesheet() appStyle() {
   return `
    img {
-    max-inline-size: 250px
+    max-inline-size: 250px;
+    min-block-size: 250px;
    }
   `
  }
@@ -26,17 +47,22 @@ import { WebComponent, CustomElement, Input, EventListener, template, stylesheet
 
 @WebComponent("app-input") class AppInput extends CustomElement {
  @Input() value;
+ _service = new service();
  
-  @stylesheet() appStyle() {
+ @stylesheet() appStyle() {
   return `
    input {
     inline-size: 250px;
     box-sizing: border-box;
     padding: 10px
-   }
+  }
   `
  }
  
+ @EventListener("input") inputController(e) {
+  this._service.url = e.target.value;
+ }
+
  @template() appTemplate() {
   return `
    <input name="" type="" value=${this.value} />
@@ -44,8 +70,62 @@ import { WebComponent, CustomElement, Input, EventListener, template, stylesheet
  }
 }
 
+@WebComponent("app-counter") class AppCounter extends CustomElement {
+ @Input() current = 0;
+ @Input() max = 50;
+ 
+ _service = new service();
+ 
+ @EventListener("ready-event") readyEvent() {
+  this._service.subscribe(x => {
+   this.current = x.length;
+  });
+ }
+ 
+ @template() appTemplate() {
+  return `
+   <p> ${this.current} / ${this.max} </p>
+  `
+ }
+}
+
+@WebComponent("app-button") class AppButton extends CustomElement {
+ _service = new service();
+ @Input() disabled = false;
+
+ @EventListener("ready-event") ready() {
+  this._service.subscribe(x => {
+   this.disabled = (x.length === 0);
+  })
+ }
+ 
+ @EventListener("click") click() {
+  alert()
+ }
+ 
+ 
+ 
+ @stylesheet() styles() {
+  return `
+   button {
+    background: blue;
+    
+    &[data-disabled="true"] {
+     background: red
+    }
+   }
+  `;
+ }
+ 
+ @template() appTemplate() {
+  return `
+   <button data-disabled=${this.disabled} >Random</button>
+  `
+ }
+}
+
 @WebComponent("app-root") class AppRoot extends CustomElement {
- @Input() src = "https://placehold.co/250/grey/white"
+ _service = new service();
  
  @stylesheet() appStyle() {
   return `
@@ -59,10 +139,16 @@ import { WebComponent, CustomElement, Input, EventListener, template, stylesheet
  }
  
  @template() appTemplate() {
+  const { url } = this._service;
+ 
   return `
    <app-title></app-title>
-   <app-image src=${this.src}></app-image>
-   <app-input value=${this.src}></app-input>
+   <app-image></app-image>
+   <app-input value=${url}></app-input>
+   <app-counter current=${url.length}></app-counter>
+   <app-button></app-button>
   `;
  }
 }
+
+@Module([AppTitle]) class AppModule {}

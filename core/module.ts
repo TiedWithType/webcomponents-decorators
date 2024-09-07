@@ -1,0 +1,1 @@
+export const Module = ([arr]) => x => arr.forEach(a => a)

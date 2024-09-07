@@ -5,5 +5,5 @@ export const EventListener = event => (target, key, desc) => {
 export const EventListenerResolver = target => {
  Reflect.ownKeys(Reflect.getPrototypeOf(target))
   .filter(k => target[k].__EventListener )
-  .map(k => target.addEventListener(target[k].__EventListener, target[k].bind(target)))
+  .map(k => target.shadow.addEventListener(target[k].__EventListener, target[k].bind(target)))
 }
