@@ -1,5 +1,6 @@
 import { EventListenerResolver } from "./events";
 
+
 export class CustomElement extends HTMLElement {
  constructor(...args) {
   super(...args);
@@ -10,7 +11,7 @@ export class CustomElement extends HTMLElement {
  connectedCallback() {
   if(this.stylesheet)
    this.styleRef.textContent = this.stylesheet();
-  
+
   this.templateRender();
   EventListenerResolver(this);
   
@@ -20,7 +21,7 @@ export class CustomElement extends HTMLElement {
  attributeChangedCallback(attr, prev, next) {
   if(prev !== next) { 
    this[attr] = next;
-   this.templateRender();
+   this.updateTemplate(attr, prev, next);
   }
  }
  
@@ -29,7 +30,11 @@ export class CustomElement extends HTMLElement {
  }
  
  templateRender() {
-  this.shadow.innerHTML = this.template();
+  this.shadow.innerHTML = this.template().trim();
   this.shadow.appendChild(this.styleRef);
+ }
+ 
+ updateTemplate(attr, prev, next) {
+  this.templateRender(); /* temporal fix */
  }
 }

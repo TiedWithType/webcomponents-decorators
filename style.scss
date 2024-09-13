@@ -10,4 +10,12 @@ html, body {
  block-size: 100%;
  margin: 0;
  padding: 0;
+ display: grid;
+ place-items: center;
+ place-content: center;
+ 
+ @media (prefers-color-scheme: dark) {
+  background: #212121;
+  color: #fff;
+ }
 }

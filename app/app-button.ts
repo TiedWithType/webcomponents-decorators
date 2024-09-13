@@ -14,10 +14,7 @@ export class AppButton extends CustomElement {
  
  @EventListener("click") click({ target }) {
   if (target.dataset.enabled == "false") return;
-  
-  Object.assign(target, {
-
-  })
+  this.settings.imageUrl = this.settings.seedUrl;
  }
  
  @stylesheet() appStyle() {
@@ -40,7 +37,7 @@ export class AppButton extends CustomElement {
  @template() appTemplate() {
   return `
    <a data-enabled=${this.state}>
-    Button</a>
+    Generate</a>
   `
  }
 }

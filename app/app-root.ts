@@ -1,4 +1,4 @@
-import { WebComponent, CustomElement, stylesheet, template } from "/web";
+import { WebComponent, CustomElement, stylesheet, template, EventListener } from "/web";
 import { Settings } from "./app-settings.service";
 
 @WebComponent("app-root") export class AppRoot extends CustomElement {
@@ -10,7 +10,7 @@ import { Settings } from "./app-settings.service";
     display: grid;
     place-items: center;
     place-content: center;
-    grid-template-columns: repeat(1, 250px)
+    grid-template-columns: repeat(1, 250px);
    }
   `
  }
