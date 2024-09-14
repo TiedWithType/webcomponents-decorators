@@ -8,9 +8,14 @@ export class AppInput extends CustomElement {
  
  @stylesheet() appStyle() {
   return `
+   :host {
+    inline-size: 100%;
+   }
+   
    input {
-    inline-size: 250px;
+    inline-size: 100%;
     box-sizing: border-box;
+    
     padding: 10px;
     
     &[readonly] {
@@ -19,8 +24,14 @@ export class AppInput extends CustomElement {
      cursor: not-allowed;
      border: solid 1px;
      border-radius: 5px;
+      
+     &:focus, &:hover {
+     overflow: 0;
+     outline: 0;
+     }
+    
      
-    @media (prefers-color-scheme: dark) {
+     @media (prefers-color-scheme: dark) {
       background: #212121;
       color: #fff;
      }

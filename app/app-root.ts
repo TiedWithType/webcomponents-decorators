@@ -8,6 +8,7 @@ import { Settings } from "./app-settings.service";
   return `
    :host {
     display: grid;
+    gap: 10px;
     place-items: center;
     place-content: center;
     grid-template-columns: repeat(1, 250px);

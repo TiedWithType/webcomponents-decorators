@@ -26,6 +26,7 @@ export class AppImage extends CustomElement {
    img {
     max-inline-size: 250px;
     min-block-size: 250px;
+    border-radius: 5px;
    }
   `
  }

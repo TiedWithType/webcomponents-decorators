@@ -20,7 +20,7 @@ export class AppButton extends CustomElement {
  @stylesheet() appStyle() {
   return `
   a {
-    border-radius: 4px;
+    border-radius: 5px;
     text-decoration: none;
     padding: 10px;
     color: #fff;
