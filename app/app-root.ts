@@ -1,31 +1,33 @@
 import { WebComponent, CustomElement, stylesheet, template, EventListener } from "/web";
-import { Settings } from "./app-settings.service";
 
 @WebComponent("app-root") export class AppRoot extends CustomElement {
- settings = new Settings();
  
  @stylesheet() appStyle() {
   return `
    :host {
-    display: grid;
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
     place-items: center;
     place-content: center;
-    grid-template-columns: repeat(1, 250px);
+    
+    h1 {
+     inline-size: min-content;
+     text-align: center;
+    }
+     
+    img {
+     inline-size: 300px;
+     object-fit: cover;
+    }
    }
   `
  }
  
  @template() appTemplate() {
-  const { imageUrl } = this.settings;
  
   return `
-   <app-title></app-title>
-   <app-image></app-image>
-   <app-input value="${imageUrl}"></app-input>
-   <app-counter current="${imageUrl.length}">
-   </app-counter>
-   <app-button></app-button>
+   <h1>WebComponents Decorators</h1>
+   <img src="/assets/logo.png" alt="logo">
   `
  }
 }
