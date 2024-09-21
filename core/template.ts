@@ -1,0 +1,1 @@
+export const template = () => (t, k) => t.constructor.prototype.template = t[k];

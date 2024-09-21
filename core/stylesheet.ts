@@ -1,0 +1,1 @@
+export const stylesheet = () => (t, k) => t.constructor.prototype.stylesheet = t[k];
