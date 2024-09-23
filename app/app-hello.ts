@@ -1,24 +1,21 @@
 import { WebComponent, CustomElement, stylesheet, template, EventListener, Input } from "../@web/decorators";
 import { onInit } from "../@decorators/hooks";
 
-@WebComponent("app-root") export class AppRoot extends CustomElement {
+@WebComponent("app-hello") export class AppHello extends CustomElement {
  
  @stylesheet() appStyle() {
   return `
    :host {
-    display: grid;
-    grid-template-columns: 300px;
-    place-items: center;
-    place-value: center;
-    user-select: none;
+    text-align: center;
    }
   `
  }
  
+ text = "Hello WebComponents";
+ 
  @template() appTemplate() {
   return `
-   <app-hello></app-hello>
-   <app-logo></app-logo>
+   <h1>${this.text}!!!</h1>
   `
  }
 }

@@ -6,21 +6,15 @@ export class CustomElement extends HTMLElement {
   super(...args);
   this.shadow = this.attachShadow({ mode: "open" });
   this.styleRef = document.createElement("style");
+  this.host = document.createElement("container");
  }
  
  connectedCallback() {
   if(this.stylesheet)
    this.styleRef.textContent = this.stylesheet();
-
+   
   this.templateRender();
   EventListenerResolver(this);
-  
-  const all =
-  this.shadow.querySelectorAll(`[data-bind]`);
-  
-  all.forEach(el => {
-   el.dataset.html = el.textContent;
-  })
   
   this.shadow.dispatchEvent(onInitDispatcher);
  }
@@ -28,7 +22,7 @@ export class CustomElement extends HTMLElement {
  attributeChangedCallback(attr, prev, next) {
   if(prev !== next) { 
    this[attr] = next;
-   this.updateTemplate(attr, prev, next);
+   this.updateTemplate();
   }
  }
  
@@ -37,20 +31,13 @@ export class CustomElement extends HTMLElement {
  }
  
  templateRender() {
-  this.shadow.innerHTML = this.template().trim();
+  this.updateTemplate();
+ 
   this.shadow.appendChild(this.styleRef);
+  this.shadow.appendChild(this.host);
  }
  
- updateTemplate(attr, prev, next) {
-  const all =
-  this.shadow.querySelectorAll(`[data-bind=${attr}]`);
-  
-  all.forEach(el => {
-   if(el.tagName == "INPUT") {
-    el.value = next;
-   } else {
-    el.textContent = next || el.dataset.html;
-   }
-  })
+ updateTemplate() {
+  this.host.innerHTML = this.template();
  }
 }

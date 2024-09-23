@@ -1,24 +1,19 @@
 import { WebComponent, CustomElement, stylesheet, template, EventListener, Input } from "../@web/decorators";
 import { onInit } from "../@decorators/hooks";
 
-@WebComponent("app-root") export class AppRoot extends CustomElement {
+@WebComponent("app-logo") export class AppLogo extends CustomElement {
  
  @stylesheet() appStyle() {
   return `
-   :host {
-    display: grid;
-    grid-template-columns: 300px;
-    place-items: center;
-    place-value: center;
-    user-select: none;
+   img {
+    inline-size: 100%;
    }
   `
  }
  
  @template() appTemplate() {
   return `
-   <app-hello></app-hello>
-   <app-logo></app-logo>
+   <img src="/assets/logo.png" alt="logo" />
   `
  }
 }
