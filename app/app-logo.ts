@@ -1,19 +1,21 @@
-import { WebComponent, CustomElement, stylesheet, template, EventListener, Input } from "../@web/decorators";
-import { onInit } from "../@decorators/hooks";
+import { WebComponent, CustomElement, stylesheet, template, EventListener } from "../@web/decorators";
 
-@WebComponent("app-logo") export class AppLogo extends CustomElement {
+@WebComponent("app-logo")
+export class AppLogo extends CustomElement {
+ src = "/assets/logo.png";
  
  @stylesheet() appStyle() {
   return `
    img {
     inline-size: 100%;
+    min-block-size: 300px;
    }
   `
  }
  
  @template() appTemplate() {
   return `
-   <img src="/assets/logo.png" alt="logo" />
+   <img src="${this.src}" alt="logo" />
   `
  }
 }

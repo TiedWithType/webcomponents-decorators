@@ -6,7 +6,7 @@ export class CustomElement extends HTMLElement {
   super(...args);
   this.shadow = this.attachShadow({ mode: "open" });
   this.styleRef = document.createElement("style");
-  this.host = document.createElement("container");
+  this.host = document.createElement("slot");
  }
  
  connectedCallback() {

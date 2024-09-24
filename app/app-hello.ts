@@ -1,7 +1,8 @@
-import { WebComponent, CustomElement, stylesheet, template, EventListener, Input } from "../@web/decorators";
-import { onInit } from "../@decorators/hooks";
+import { WebComponent, CustomElement, stylesheet, template, EventListener } from "../@web/decorators";
 
-@WebComponent("app-hello") export class AppHello extends CustomElement {
+@WebComponent("app-hello")
+export class AppHello extends CustomElement {
+ text = "Hello WebComponents";
  
  @stylesheet() appStyle() {
   return `
@@ -10,8 +11,6 @@ import { onInit } from "../@decorators/hooks";
    }
   `
  }
- 
- text = "Hello WebComponents";
  
  @template() appTemplate() {
   return `

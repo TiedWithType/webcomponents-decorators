@@ -1,7 +1,7 @@
 import { WebComponent, CustomElement, stylesheet, template, EventListener, Input } from "../@web/decorators";
-import { onInit } from "../@decorators/hooks";
 
-@WebComponent("app-root") export class AppRoot extends CustomElement {
+@WebComponent("app-root")
+export class AppRoot extends CustomElement {
  
  @stylesheet() appStyle() {
   return `
@@ -11,6 +11,19 @@ import { onInit } from "../@decorators/hooks";
     place-items: center;
     place-value: center;
     user-select: none;
+    
+    span {
+     font-size: x-small;
+     
+     mark {
+      font-family: monospace;
+      color: #fff;
+      background: inherit;
+      border: solid .5px;
+      border-radius: 5px;
+      padding: 5px;
+     }
+    }
    }
   `
  }
@@ -19,6 +32,11 @@ import { onInit } from "../@decorators/hooks";
   return `
    <app-hello></app-hello>
    <app-logo></app-logo>
+   <span>
+    to change content edit
+    <mark>app-hello.ts</mark> or
+    <mark>app-logo.ts</mark>
+   </span>
   `
  }
 }
