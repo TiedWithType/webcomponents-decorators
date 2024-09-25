@@ -1,9 +1,9 @@
-import { WebComponent, CustomElement, stylesheet, template, EventListener, Input } from "../@web/decorators";
+import { WebComponent, CustomElement, styles, template } from "../@web/decorators";
 
 @WebComponent("app-root")
 export class AppRoot extends CustomElement {
  
- @stylesheet() appStyle() {
+ @styles() static appStyle() {
   return `
    :host {
     display: grid;
@@ -12,14 +12,18 @@ export class AppRoot extends CustomElement {
     place-value: center;
     user-select: none;
     
+    @media screen and (width > 628px) {
+     grid-template-columns: 600px;
+    }
+    
     span {
-     font-size: x-small;
-     
+     font-size: smaller;
+     line-height: 1.6;
      mark {
       font-family: monospace;
-      color: #fff;
-      background: inherit;
-      border: solid .5px;
+      color: #212121;
+      background: #fff;
+      border: solid 1px;
       border-radius: 5px;
       padding: 5px;
      }
@@ -28,7 +32,7 @@ export class AppRoot extends CustomElement {
   `
  }
  
- @template() appTemplate() {
+ @template() static appTemplate() {
   return `
    <app-hello></app-hello>
    <app-logo></app-logo>

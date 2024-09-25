@@ -1,10 +1,10 @@
-import { WebComponent, CustomElement, stylesheet, template, EventListener } from "../@web/decorators";
+import { WebComponent, CustomElement, styles, template } from "../@web/decorators";
 
 @WebComponent("app-logo")
 export class AppLogo extends CustomElement {
  src = "/assets/logo.png";
  
- @stylesheet() appStyle() {
+ @styles() static appStyle() {
   return `
    img {
     inline-size: 100%;
@@ -13,9 +13,7 @@ export class AppLogo extends CustomElement {
   `
  }
  
- @template() appTemplate() {
-  return `
-   <img src="${this.src}" alt="logo" />
-  `
+ @template() static appTemplate() {
+  return `<img src="${this.src}" alt="logo" />`
  }
 }

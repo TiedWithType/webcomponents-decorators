@@ -10,8 +10,8 @@ export class CustomElement extends HTMLElement {
  }
  
  connectedCallback() {
-  if(this.stylesheet)
-   this.styleRef.textContent = this.stylesheet();
+  if(this.styles)
+   this.styleRef.textContent = this.styles();
    
   this.templateRender();
   EventListenerResolver(this);

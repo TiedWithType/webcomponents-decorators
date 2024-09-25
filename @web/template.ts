@@ -1,1 +1,3 @@
-export const template = () => (t, k) => t.constructor.prototype.template = t[k];
+export const template = () => (t, k) => {
+ Reflect.set(t.prototype, 'template', Reflect.get(t, k));
+}
