@@ -2,7 +2,7 @@ import { WebComponent, CustomElement, styles, template } from "../@web/decorator
 
 @WebComponent("app-logo")
 export class AppLogo extends CustomElement {
- src = "/assets/logo.png";
+ src = "/assets/logo.webp";
  
  @styles() static appStyle() {
   return `
