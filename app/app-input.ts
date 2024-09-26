@@ -1,4 +1,4 @@
-import { WebComponent, CustomElement, Input, EventListener, template, stylesheet } from "/web";
+import { WebComponent, CustomElement, styles, template, Input, EventListener, onInit } from "../@web/decorators";
 import { Settings } from "./app-settings.service";
 
 @WebComponent("app-input")
@@ -6,7 +6,7 @@ export class AppInput extends CustomElement {
  @Input() value;
  settings = new Settings();
  
- @stylesheet() appStyle() {
+ @styles() static appStyle() {
   return `
    :host {
     inline-size: 100%;
@@ -39,7 +39,7 @@ export class AppInput extends CustomElement {
   }`
  }
  
- @EventListener("ready-event") ready() {
+ @onInit() ready() {
   this.settings.subscribe(x => {
    this.value = x;
   })
@@ -49,7 +49,7 @@ export class AppInput extends CustomElement {
   event.target.select()
  }
 
- @template() appTemplate() {
+ @template() static appTemplate() {
   return `
    <input readonly=true type="search" value=${this.value} />
   `

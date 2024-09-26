@@ -1,4 +1,4 @@
-import { WebComponent, CustomElement, Input, EventListener, template, stylesheet } from "/web";
+import { WebComponent, CustomElement, styles, template, Input, EventListener, onInit } from "../@web/decorators";
 import { Settings } from "./app-settings.service";
 
 @WebComponent("app-button")
@@ -6,7 +6,7 @@ export class AppButton extends CustomElement {
  settings = new Settings();
  @Input() state = true;
 
- @EventListener("ready-event") ready() {
+ @onInit() init() {
   this.settings.subscribe(x => {
    this.state = (x.length > 0);
   })
@@ -17,7 +17,7 @@ export class AppButton extends CustomElement {
   this.settings.imageUrl = this.settings.seedUrl;
  }
  
- @stylesheet() appStyle() {
+ @styles() static appStyle() {
   return `
   a {
     border-radius: 5px;
@@ -34,7 +34,7 @@ export class AppButton extends CustomElement {
   `;
  }
  
- @template() appTemplate() {
+ @template() static appTemplate() {
   return `
    <a data-enabled=${this.state}>
     Generate</a>

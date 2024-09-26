@@ -1,4 +1,4 @@
-import { WebComponent, CustomElement, Input, EventListener, template, stylesheet } from "/web";
+import { WebComponent, CustomElement, styles, template, Input, EventListener, onInit } from "../@web/decorators";
 import { Settings } from "./app-settings.service";
 
 @WebComponent("app-image")
@@ -16,12 +16,12 @@ export class AppImage extends CustomElement {
   });
  }
 
- @EventListener("ready-event") readyEvent() {
+ @onInit() readyEvent() {
   this.settings.subscribe(async result =>
    this.src = await this.imageValid(result));
  }
  
- @stylesheet() appStyle() {
+ @styles() static appStyle() {
   return `
    img {
     max-inline-size: 250px;
@@ -31,7 +31,7 @@ export class AppImage extends CustomElement {
   `
  }
  
- @template() appTemplate() {
+ @template() static appTemplate() {
   return `
    <img src=${this.src} alt=${this.src} />
   `

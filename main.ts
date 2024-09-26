@@ -1,9 +1,9 @@
-import { Module } from "./web";
-import { AppTitle } from "./app/app-title";
+import { Module } from "./@web/decorators";
+import { AppRoot } from "./app/app-root";
+import { AppButton } from "./app/app-button";
+import { AppCounter } from "./app/app-counter";
 import { AppImage } from "./app/app-image";
 import { AppInput } from "./app/app-input";
-import { AppCounter } from "./app/app-counter";
-import { AppButton } from "./app/app-button";
-import { AppRoot } from "./app/app-root";
+import { AppTitle } from "./app/app-title";
 
-@Module([ AppTitle, AppImage, AppInput, AppCounter, AppButton, AppRoot ]) export class AppModule {}
+@Module([ AppButton, AppCounter, AppImage, AppInput, AppTitle, AppRoot ]) export class AppModule {}

@@ -1,4 +1,4 @@
-import { WebComponent, CustomElement, Input, EventListener, template, stylesheet } from "/web";
+import { WebComponent, CustomElement, styles, template, Input, EventListener, onInit } from "../@web/decorators";
 import { Settings } from "./app-settings.service";
 
 @WebComponent("app-counter")
@@ -8,13 +8,13 @@ export class AppCounter extends CustomElement {
  
  settings = new Settings();
  
- @EventListener("ready-event") readyEvent() {
+ @onInit() readyEvent() {
   this.settings.subscribe(x => {
    this.current = x.length;
   });
  }
  
- @stylesheet() appStyle() {
+ @styles() static appStyle() {
   return `
    p {
     font-size: 12px;
@@ -22,7 +22,7 @@ export class AppCounter extends CustomElement {
   `
  }
  
- @template() appTemplate() {
+ @template() static appTemplate() {
   return `
    <p> ${this.current} / ${this.max} </p>
   `

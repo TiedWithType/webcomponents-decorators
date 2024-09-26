@@ -1,10 +1,10 @@
-import { WebComponent, CustomElement, stylesheet, template, EventListener } from "/web";
+import { WebComponent, CustomElement, styles, template, Input, EventListener, onInit } from "../@web/decorators";
 import { Settings } from "./app-settings.service";
 
 @WebComponent("app-root") export class AppRoot extends CustomElement {
  settings = new Settings();
  
- @stylesheet() appStyle() {
+ @styles() static appStyle() {
   return `
    :host {
     display: grid;
@@ -16,7 +16,7 @@ import { Settings } from "./app-settings.service";
   `
  }
  
- @template() appTemplate() {
+ @template() static appTemplate() {
   const { imageUrl } = this.settings;
  
   return `

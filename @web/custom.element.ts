@@ -1,27 +1,28 @@
 import { EventListenerResolver } from "./events";
-
+import { onInitDispatcher } from "./hooks";
 
 export class CustomElement extends HTMLElement {
  constructor(...args) {
   super(...args);
   this.shadow = this.attachShadow({ mode: "open" });
   this.styleRef = document.createElement("style");
+  this.host = document.createElement("slot");
  }
  
  connectedCallback() {
-  if(this.stylesheet)
-   this.styleRef.textContent = this.stylesheet();
-
+  if(this.styles)
+   this.styleRef.textContent = this.styles();
+   
   this.templateRender();
   EventListenerResolver(this);
   
-  this.shadow.dispatchEvent(new CustomEvent("ready-event", {}));
+  this.shadow.dispatchEvent(onInitDispatcher);
  }
  
  attributeChangedCallback(attr, prev, next) {
   if(prev !== next) { 
    this[attr] = next;
-   this.updateTemplate(attr, prev, next);
+   this.updateTemplate();
   }
  }
  
@@ -30,11 +31,13 @@ export class CustomElement extends HTMLElement {
  }
  
  templateRender() {
-  this.shadow.innerHTML = this.template().trim();
+  this.updateTemplate();
+ 
   this.shadow.appendChild(this.styleRef);
+  this.shadow.appendChild(this.host);
  }
  
- updateTemplate(attr, prev, next) {
-  this.templateRender(); /* temporal fix */
+ updateTemplate() {
+  this.host.innerHTML = this.template();
  }
 }
