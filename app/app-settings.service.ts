@@ -5,11 +5,12 @@ import fallbackImage from "/assets/fallback.jpg";
  static defaultImage = fallbackImage;
  
  size = 1024;
+ pool = 1000000; 
  baseUrl = "https://picsum.photos/seed";
  imageUrl = "";
  
  get seedUrl() {
-  let seed = Math.floor(Math.random() * 100000);
+  let seed = Math.floor(Math.random() * this.pool);
   return `${this.baseUrl}/${seed}/${this.size}`
  }
 }
