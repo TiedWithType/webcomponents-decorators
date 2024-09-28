@@ -1,5 +1,5 @@
 export const EventListener = event => (target, key, desc) => {
- desc.value.__EventListener = event;
+ Reflect.set(desc.value, "__EventListener", event);
 }
 
 export const EventListenerResolver = target => {

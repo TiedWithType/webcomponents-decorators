@@ -3,7 +3,7 @@ import { Settings } from "./app-settings.service";
 
 @WebComponent("app-input")
 export class AppInput extends CustomElement {
- @Input() value;
+ @Input() value = "";
  settings = new Settings();
  
  @styles() static appStyle() {

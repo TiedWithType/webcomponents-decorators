@@ -4,10 +4,11 @@
   font-family: "Comfortaa", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+  --primaryColor: #3F51B5;
 }
 
 html, body {
- block-size: 100%;
+ min-block-size: 100%;
  margin: 0;
  padding: 0;
  display: grid;

@@ -1,9 +1,6 @@
 import { WebComponent, CustomElement, styles, template, Input, EventListener, onInit } from "../@web/decorators";
-import { Settings } from "./app-settings.service";
 
 @WebComponent("app-root") export class AppRoot extends CustomElement {
- settings = new Settings();
- 
  @styles() static appStyle() {
   return `
    :host {
@@ -17,14 +14,10 @@ import { Settings } from "./app-settings.service";
  }
  
  @template() static appTemplate() {
-  const { imageUrl } = this.settings;
- 
   return `
    <app-title></app-title>
    <app-image></app-image>
-   <app-input value="${imageUrl}"></app-input>
-   <app-counter current="${imageUrl.length}">
-   </app-counter>
+   <app-input></app-input>
    <app-button></app-button>
   `
  }

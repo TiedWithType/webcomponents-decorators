@@ -15,6 +15,11 @@ export class AppTitle extends CustomElement {
     font-size: 80%;
     place-items: center;
     place-content: center;
+    
+    h4 {
+     color: var(--primaryColor);
+     text-align: right;
+    }
    }
   `
  }
