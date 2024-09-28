@@ -1,3 +1,9 @@
 {
+ "name": "webcomponents-decorators",
+ "description": "decorators for web components",
+ "version": "0.0.1-280924_0730_build",
+ "author": "TiedWithType",
+ "repository": "https://github.com/tiedwithtype/webcomponents-decorators",
+ "main": "./@web/decorators.ts",
  "type": "module"
 }
