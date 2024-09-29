@@ -1,8 +1,9 @@
 import { WebComponent, CustomElement, styles, template } from "../@web/decorators";
+import logoImg from "/assets/logo.webp";
 
 @WebComponent("app-logo")
 export class AppLogo extends CustomElement {
- src = "/assets/logo.webp";
+ src = logoImg;
  
  @styles() static appStyle() {
   return `

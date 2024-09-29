@@ -1,9 +1,31 @@
 {
  "name": "webcomponents-decorators",
- "description": "decorators for web components",
- "version": "0.0.1-280924.0730+build",
+ "version": "0.0.1-main.branch",
+ "description": "native webcomponents decorators powered by typescript, vite and sass",
+ "devDependencies": {
+  "sass": "^1.79.4",
+  "vite": "^6.0.0-beta.1"
+ },
+ "scripts": {
+  "start": "vite --open",
+  "build": "vite build",
+  "preview": "vite preview"
+ },
+ "repository": {
+  "type": "git",
+  "url": "https://github.com/TiedWithType/webcomponents-decorators/tree/main"
+ },
+ "keywords": [
+  "decorators",
+  "ts",
+  "vite",
+  "html",
+  "sass"
+ ],
  "author": "TiedWithType",
- "repository": "https://github.com/tiedwithtype/webcomponents-decorators",
- "main": "./@web/decorators.ts",
- "type": "module"
+ "license": "ISC",
+ "bugs": {
+  "url": "https://github.com/TiedWithType/webcomponents-decorators/issues"
+ },
+ "homepage": "https://github.com/TiedWithType/webcomponents-decorators/tree/main#readme"
 }
