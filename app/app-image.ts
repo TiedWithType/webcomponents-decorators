@@ -3,8 +3,8 @@ import { Settings } from "./app-settings.service";
 
 @WebComponent("app-image")
 export class AppImage extends CustomElement {
- @Input() src = Settings.defaultImage;
  settings = new Settings();
+ @Input() src = this.settings.imageUrl;
  
  async imageValid(src) {
   return new Promise(resolve => {

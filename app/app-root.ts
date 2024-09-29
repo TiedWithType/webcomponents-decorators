@@ -17,6 +17,7 @@ import { WebComponent, CustomElement, styles, template, Input, EventListener, on
   return `
    <app-title></app-title>
    <app-image></app-image>
+   <app-settings></app-settings>
    <app-input></app-input>
    <app-button></app-button>
   `

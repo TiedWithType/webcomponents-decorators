@@ -10,13 +10,30 @@ export class AppInput extends CustomElement {
   return `
    :host {
     inline-size: 100%;
+    position: relative;
    }
    
    input {
     inline-size: 100%;
     box-sizing: border-box;
-    
+    font-family: inherit;
     padding: 10px;
+    
+        &+label {
+        position: absolute;
+        top: -7px;
+        left: 7px;
+        font-size: 75%;
+        background: #fff;
+        padding-inline: 5px;
+        transition: color 0.3s ease;
+        color: #a9a9a9; /* Początkowy kolor etykiety */
+        
+           @media (prefers-color-scheme: dark) {
+      background: #212121;
+      color: #fff;
+     }
+      }
     
     &[readonly] {
      background-color: #d3d3d3;
@@ -29,6 +46,10 @@ export class AppInput extends CustomElement {
      overflow: 0;
      outline: 0;
      }
+     
+      &:focus-within + label {
+        color: var(--accentColor); /* Kolor etykiety po wprowadzeniu tekstu */
+      }
     
      
      @media (prefers-color-scheme: dark) {
@@ -40,8 +61,8 @@ export class AppInput extends CustomElement {
  }
  
  @onInit() ready() {
-  this.settings.subscribe(x => {
-   this.value = x;
+  this.settings.subscribe((x, key) => {
+    if(key =="imageUrl")this.value = x;
   })
  }
  
@@ -51,7 +72,8 @@ export class AppInput extends CustomElement {
 
  @template() static appTemplate() {
   return `
-   <input readonly=true type="search" value=${this.value} />
+   <input readonly=true value=${this.value} />
+   <label for="">url</label>
   `
  }
 }
