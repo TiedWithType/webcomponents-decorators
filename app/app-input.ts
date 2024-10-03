@@ -19,42 +19,38 @@ export class AppInput extends CustomElement {
     font-family: inherit;
     padding: 10px;
     
-        &+label {
-        position: absolute;
-        top: -7px;
-        left: 7px;
-        font-size: 75%;
-        background: #fff;
-        padding-inline: 5px;
-        transition: color 0.3s ease;
-        color: #a9a9a9; /* Początkowy kolor etykiety */
-        
-           @media (prefers-color-scheme: dark) {
-      background: #212121;
-      color: #fff;
+    @media (prefers-color-scheme: dark) {
+     background: var(--dark);
+     color: var(--light);
+    }
+    
+    &+label {
+     position: absolute;
+     top: -7px;
+     left: 7px;
+     font-size: 75%;
+     background: #fff;
+     padding-inline: 5px;
+     transition: color 0.3s ease;
+     
+     @media (prefers-color-scheme: dark) {
+      background: var(--dark);
+      color: var(--light);
      }
-      }
+    }
     
     &[readonly] {
-     background-color: #d3d3d3;
-     color: #a9a9a9;
      cursor: not-allowed;
      border: solid 1px;
      border-radius: 5px;
       
      &:focus, &:hover {
-     overflow: 0;
-     outline: 0;
+      overflow: 0;
+      outline: 0;
      }
      
-      &:focus-within + label {
-        color: var(--accentColor); /* Kolor etykiety po wprowadzeniu tekstu */
-      }
-    
-     
-     @media (prefers-color-scheme: dark) {
-      background: #212121;
-      color: #fff;
+     &:focus-within + label {
+      color: var(--accentColor);
      }
     }
   }`

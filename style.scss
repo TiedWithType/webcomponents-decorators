@@ -6,6 +6,22 @@
   font-style: normal;
   --primaryColor: #3F51B5;
   --accentColor: #FF4081;
+  --light: #ffffff;
+  --dark: #212121;
+}
+
+@mixin light-theme() {
+ @media (prefers-color-scheme: light) {
+  background: var(--light);
+  color: var(--dark);
+ }
+}
+
+@mixin dark-theme() {
+ @media (prefers-color-scheme: dark) {
+  background: var(--dark);
+  color: var(--light);
+ }
 }
 
 html, body {
@@ -16,8 +32,6 @@ html, body {
  place-items: center;
  place-content: center;
  
- @media (prefers-color-scheme: dark) {
-  background: #212121;
-  color: #fff;
- }
+ @include light-theme;
+ @include dark-theme;
 }

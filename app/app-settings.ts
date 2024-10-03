@@ -20,10 +20,13 @@ static appStyle() {
       box-sizing: border-box;
       font-family: inherit;
       padding: 10px;
-      background-color: #d3d3d3;
-      color: #a9a9a9;
       border: solid 1px;
       border-radius: 5px;
+      
+       @media (prefers-color-scheme: dark) {
+  background: var(--dark);
+  color: var(--light);
+ }
       
       &+label {
         position: absolute;
@@ -33,7 +36,11 @@ static appStyle() {
         background: #fff;
         padding-inline: 5px;
         transition: color 0.3s ease;
-        color: #a9a9a9; /* Początkowy kolor etykiety */
+        
+         @media (prefers-color-scheme: dark) {
+  background: var(--dark);
+  color: var(--light);
+ }
       }
 
       &:focus, &:hover {
