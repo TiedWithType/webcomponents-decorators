@@ -4,14 +4,19 @@ import { onInitDispatcher } from "./hooks";
 export class CustomElement extends HTMLElement {
  constructor(...args) {
   super(...args);
+  this.initalSetup();
+ }
+ 
+ initalSetup() {
   this.shadow = this.attachShadow({ mode: "open" });
   this.styleRef = document.createElement("style");
-  this.host = document.createElement("slot");
+  this.slotRef = document.createElement("slot");
+  this.parser = new DOMParser();
  }
  
  connectedCallback() {
-  if(this.styles)
-   this.styleRef.textContent = this.styles();
+  this.styleRef.textContent =
+  this.styles ? this.styles() : null ;
    
   this.templateRender();
   EventListenerResolver(this);
@@ -32,32 +37,34 @@ export class CustomElement extends HTMLElement {
  
  templateRender() {
   this.shadow.appendChild(this.styleRef);
-  this.shadow.appendChild(this.host);
+  this.shadow.appendChild(this.slotRef);
   
-  this.host.innerHTML = this.template()
+  this.slotRef.innerHTML = this.template();
  }
  
  updateTemplate(attr, next) {
-  if (typeof this.template === 'function') {
-    const parser = new DOMParser();
-    const parsedDocument = parser.parseFromString(this.template(), 'text/html');
-    const newElements = parsedDocument.querySelectorAll(`[data-attr="${attr}"]`);
+  const vdom = this.parser
+  .parseFromString(this.template(), 'text/html');
+   
+  const vmatch = vdom
+  .querySelectorAll(`[data-attr="${attr}"]`);
 
-    if (newElements.length > 0) {
-     const currentElements = this.shadow.querySelectorAll(`[data-attr="${attr}"]`);
-    if (currentElements.length === newElements.length) {
-     
-        currentElements.forEach((currentElement, index) => {
-          currentElement.innerHTML = newElements[index].innerHTML;
-        });
-      } else {
-        this.host.innerHTML = this.template()
-      }
-    } else {  
-      this.host.innerHTML = this.template()
-    }
+  if (vmatch.length === 0) {
+   this.slotRef.innerHTML = this.template();
+   return;
   }
-}
 
+  const match = this.shadow
+  .querySelectorAll(`[data-attr="${attr}"]`);
+
+  if (match.length !== vmatch.length) {
+   this.slotRef.innerHTML = this.template();
+   return;
+  }
+
+  match.forEach((elem, index) => {
+   elem.innerHTML = vmatch[index].innerHTML;
+  });
+ }
 
 }

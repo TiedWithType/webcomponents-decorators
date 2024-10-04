@@ -9,9 +9,24 @@ import { WebComponent, CustomElement, styles, template, Input, EventListener, on
     place-items: center;
     place-content: center;
     grid-template-columns: repeat(1, 250px);
+    
+    div {   
+     inline-size: 100%;
+     display: flex;
+     gap: 10px;
+     justify-content: space-between;
+    }
+    
+    span {
+     position: fixed;
+     bottom: 0;
+     font-size: 10px;
+    }
    }
   `
  }
+ 
+ appVersion = "0.0.1-cherry_pie.build_0410242230"
  
  @template() static appTemplate() {
   return `
@@ -19,7 +34,11 @@ import { WebComponent, CustomElement, styles, template, Input, EventListener, on
    <app-image></app-image>
    <app-settings></app-settings>
    <app-input></app-input>
-   <app-button></app-button>
+   <div>
+    <app-buttons></app-buttons>
+    <app-button></app-button>
+   </div>
+   <span>version ${this.appVersion}</span>
   `
  }
 }
