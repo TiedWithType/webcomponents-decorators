@@ -57,10 +57,10 @@ export class AppInput extends CustomElement {
  }
  
  @onInit() ready() {
-  this.value = this.settings.imageUrl;
+  this.value = this.settings.imageUrl.slice(0, -5);
  
   this.settings.subscribe((x, key) => {
-    if(key =="imageUrl") this.value = x;
+    if(key =="imageUrl") this.value = x.slice(0, -5);
   })
  }
  

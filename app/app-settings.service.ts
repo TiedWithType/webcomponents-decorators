@@ -14,7 +14,7 @@ import fallbackImage from "/assets/fallback.webp";
  fixedUrl(seed) {
   this.seed = seed;
   const url =
-  `${this.baseUrl}/${this.seed}/${this.size}`;
+  `${this.baseUrl}/${this.seed}/${this.size}.webp`;
   
   localStorage.url = url;
   localStorage.seed = this.seed;
@@ -25,7 +25,7 @@ import fallbackImage from "/assets/fallback.webp";
  get seedUrl() {
   this.seed = Math.floor(Math.random() * this.pool);
   const url =
-  `${this.baseUrl}/${this.seed}/${this.size}`;
+  `${this.baseUrl}/${this.seed}/${this.size}.webp`;
   
   localStorage.url = url;
   localStorage.seed = this.seed;
