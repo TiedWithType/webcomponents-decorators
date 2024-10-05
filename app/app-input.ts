@@ -24,6 +24,8 @@ export class AppInput extends CustomElement {
      color: var(--light);
     }
     
+    transition: 0.3s ease;
+    
     &+label {
      position: absolute;
      top: -7px;
@@ -31,7 +33,7 @@ export class AppInput extends CustomElement {
      font-size: 75%;
      background: #fff;
      padding-inline: 5px;
-     transition: color 0.3s ease;
+     transition: 0.3s ease;
      
      @media (prefers-color-scheme: dark) {
       background: var(--dark);
@@ -49,9 +51,14 @@ export class AppInput extends CustomElement {
       outline: 0;
      }
      
-     &:focus-within + label {
-      color: var(--accentColor);
-     }
+       &:focus-within {
+        
+        & + label {
+         color: var(--accentColor);
+        }
+        
+        border-color: var(--accentColor);
+      }
     }
   }`
  }
@@ -64,8 +71,10 @@ export class AppInput extends CustomElement {
   })
  }
  
- @EventListener("click") inputController(event) {
-  event.target.select()
+ @EventListener("click") async inputController(event) {
+  await navigator.share({
+   url: event.target.value,
+  })
  }
 
  @template() static appTemplate() {

@@ -9,6 +9,7 @@ static appStyle() {
       inline-size: 100%;
       display: flex;
       gap: 10px;
+      z-index: 1;
     }
 
     section {
@@ -27,7 +28,7 @@ static appStyle() {
   background: var(--dark);
   color: var(--light);
  }
-      
+      transition: .3s ease;
       &+label {
         position: absolute;
         top: -7px;
@@ -35,7 +36,7 @@ static appStyle() {
         font-size: 75%;
         background: #fff;
         padding-inline: 5px;
-        transition: color 0.3s ease;
+        transition: .3s ease;
         
          @media (prefers-color-scheme: dark) {
   background: var(--dark);
@@ -48,8 +49,13 @@ static appStyle() {
         outline: 0;
       }
 
-      &:focus-within + label {
-        color: var(--accentColor);
+      &:focus-within {
+        
+        & + label {
+         color: var(--accentColor);
+        }
+        
+        border-color: var(--accentColor);
       }
 
       @media (prefers-color-scheme: dark) {

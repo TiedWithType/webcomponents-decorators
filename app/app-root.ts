@@ -27,7 +27,7 @@ import { WebComponent, CustomElement, styles, template, Input, EventListener, on
   `
  }
  
- appVersion = "0.0.2-apple_pie.build_0510241015";
+ appVersion = "1.0.0-NewYork";
  
  @template() static appTemplate() {
   return `

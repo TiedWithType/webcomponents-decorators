@@ -25,10 +25,20 @@ export class AppImage extends CustomElement {
  
  @styles() static appStyle() {
   return `
+   :host {
+    z-index: 999;
+   }
+  
    img {
     max-inline-size: 250px;
     min-block-size: 250px;
     border-radius: 5px;
+    transition: .3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    
+    &:hover {
+     scale: 1.4;
+     border-radius: 50%;
+    }
    }
   `
  }

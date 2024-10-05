@@ -8,10 +8,14 @@ import fallbackImage from "/assets/fallback.webp";
  pool = 1e4;
  seed;
  baseUrl = "https://picsum.photos/seed";
- imageUrl = localStorage.url ??
+ imageUrl = localStorage.url ||
  Settings.defaultImage;
  
  fixedUrl(seed) {
+  if (this.size > 4096) {
+   this.size = 1024;
+  }
+  
   this.seed = seed;
   const url =
   `${this.baseUrl}/${this.seed}/${this.size}.webp`;
@@ -23,6 +27,10 @@ import fallbackImage from "/assets/fallback.webp";
  }
  
  get seedUrl() {
+  if (this.size > 4096) {
+   this.size = 1024;
+  }
+  
   this.seed = Math.floor(Math.random() * this.pool);
   const url =
   `${this.baseUrl}/${this.seed}/${this.size}.webp`;
