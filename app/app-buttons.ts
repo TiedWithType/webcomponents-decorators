@@ -26,7 +26,8 @@ export class AppButtons extends CustomElement {
  }
  
  @EventListener("click") seedControl({target}) {
-  this.seed = this.settings.seed ?? 0;
+  this.seed = parseInt(localStorage.seed) ||
+  this.settings.seed;
   this[target.dataset.attr]();
  }
  
@@ -40,6 +41,10 @@ export class AppButtons extends CustomElement {
  }
  
  next() {
+  if(this.seed == this.settings.pool) {
+   return;
+  }
+ 
   this.settings.imageUrl =
   this.settings.fixedUrl(this.seed+=1);
  }

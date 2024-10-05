@@ -17,8 +17,10 @@ export class AppImage extends CustomElement {
  }
 
  @onInit() readyEvent() {
-  this.settings.subscribe(async result =>
-   this.src = await this.imageValid(result));
+  this.settings.subscribe(async (result, key) => {
+   if (key != "imageUrl") return;
+   this.src = await this.imageValid(result)
+  });
  }
  
  @styles() static appStyle() {
@@ -33,7 +35,7 @@ export class AppImage extends CustomElement {
  
  @template() static appTemplate() {
   return `
-   <img src=${this.src} alt=${this.src} />
+   <img loading="lazy" src=${this.src} alt=${this.src} />
   `
  }
 }

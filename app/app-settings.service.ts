@@ -1,5 +1,5 @@
 import { Service } from "../@web/decorators";
-import fallbackImage from "/assets/fallback.jpg";
+import fallbackImage from "/assets/fallback.webp";
 
 @Service() export class Settings {
  static defaultImage = fallbackImage;
@@ -8,15 +8,28 @@ import fallbackImage from "/assets/fallback.jpg";
  pool = 1e4;
  seed;
  baseUrl = "https://picsum.photos/seed";
- imageUrl = Settings.defaultImage;
+ imageUrl = localStorage.url ??
+ Settings.defaultImage;
  
  fixedUrl(seed) {
   this.seed = seed;
-  return `${this.baseUrl}/${this.seed}/${this.size}`
+  const url =
+  `${this.baseUrl}/${this.seed}/${this.size}`;
+  
+  localStorage.url = url;
+  localStorage.seed = this.seed;
+  
+  return url;
  }
  
  get seedUrl() {
   this.seed = Math.floor(Math.random() * this.pool);
-  return `${this.baseUrl}/${this.seed}/${this.size}`
+  const url =
+  `${this.baseUrl}/${this.seed}/${this.size}`;
+  
+  localStorage.url = url;
+  localStorage.seed = this.seed;
+  
+  return url;
  }
 }
