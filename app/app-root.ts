@@ -7,25 +7,23 @@ export class AppRoot extends CustomElement {
   return `
    :host {
     display: grid;
-    grid-template-columns: 300px;
+    grid-template-columns: 18.75rem;
     place-items: center;
     place-value: center;
     user-select: none;
     
-    @media screen and (width > 628px) {
-     grid-template-columns: 600px;
+    @media screen and (width > 39.25rem) {
+     grid-template-columns: 37.5rem;
     }
     
     span {
      font-size: smaller;
-     line-height: 1.6;
+     line-height: 1.4;
+     
      mark {
       font-family: monospace;
-      color: #212121;
-      background: #fff;
-      border: solid 1px;
-      border-radius: 5px;
-      padding: 5px;
+      color: var(--accentColor);
+      background: transparent;
      }
     }
    }
@@ -37,9 +35,9 @@ export class AppRoot extends CustomElement {
    <app-hello></app-hello>
    <app-logo></app-logo>
    <span>
-    to change content edit
+    edit
     <mark>app-hello.ts</mark> or
-    <mark>app-logo.ts</mark>
+    <mark>app-logo.ts</mark> to change content 
    </span>
   `
  }

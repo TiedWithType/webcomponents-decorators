@@ -25,7 +25,7 @@ export const Service = () => <T extends Function>(constructor: T) => {
      },
      set: v => {
       orig = v;
-      this.listeners.forEach(cb => cb(v))
+      this.listeners.forEach(cb => cb(v, key))
      }
     })
    })

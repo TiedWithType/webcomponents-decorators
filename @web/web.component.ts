@@ -1,1 +1,3 @@
-export const WebComponent = selector => target => customElements.define(selector, target)
+export const WebComponent = (selector) => (target) => {
+ customElements.define(selector, target)
+}

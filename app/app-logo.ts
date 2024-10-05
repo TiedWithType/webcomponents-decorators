@@ -10,6 +10,7 @@ export class AppLogo extends CustomElement {
    img {
     inline-size: 100%;
     min-block-size: 300px;
+    transform: translateX(-10px)
    }
   `
  }
