@@ -20,7 +20,7 @@ export class AppButtons extends CustomElement {
     background: var(--accentColor);
     font-size: 14px;
     border: 0;
-    font-family: inherit;
+    font-family: inherit;  
    }
   `;
  }
@@ -51,8 +51,8 @@ export class AppButtons extends CustomElement {
  
  @template() static appTemplate() {
   return `
-   <button data-attr="prev">Prev</button>
-   <button data-attr="next">Next</button>
+   <button data-attr="prev">&lt; Prev</button>
+   <button data-attr="next">Next &gt;</button>
   `
  }
 }

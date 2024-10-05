@@ -1,0 +1,40 @@
+@mixin create-theme($primaryColor, $accentColor) {
+ & {
+  --primaryColor: #{$primaryColor};
+  --accentColor: #{$accentColor};
+ }
+}
+
+/* Selected Theme */
+@mixin color-theme {
+ @include indigo-pink;
+}
+
+/* Material Colors */
+@mixin indigo-pink {
+  @include create-theme(#3F51B5, #FF4081);
+}
+
+@mixin green-blue {
+  @include create-theme(#448AFF, #4CAF50);
+}
+
+@mixin red-orange {
+  @include create-theme(#F44336, #FF9800);
+}
+
+@mixin purple-yellow {
+  @include create-theme(#9C27B0, #FFEB3B);
+}
+
+@mixin teal-lime {
+  @include create-theme(#009688, #CDDC39);
+}
+
+@mixin brown-cyan {
+  @include create-theme(#795548, #00BCD4);
+}
+
+@mixin grey-pink {
+  @include create-theme(#9E9E9E, #E91E63);
+}

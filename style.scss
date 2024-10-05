@@ -1,14 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
-
-:root {
-  font-family: "Comfortaa", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  --primaryColor: #3F51B5;
-  --accentColor: #FF4081;
-  --light: #ffffff;
-  --dark: #212121;
-}
+@import "themes.scss";
 
 @mixin light-theme() {
  @media (prefers-color-scheme: light) {
@@ -24,6 +15,14 @@
  }
 }
 
+:root {
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  --light: #ffffff;
+  --dark: #212121;
+}
+
 html, body {
  min-block-size: 100%;
  margin: 0;
@@ -34,4 +33,5 @@ html, body {
  
  @include light-theme;
  @include dark-theme;
+ @include color-theme;
 }

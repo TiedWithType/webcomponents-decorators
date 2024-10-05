@@ -49,7 +49,7 @@ static appStyle() {
       }
 
       &:focus-within + label {
-        color: var(--accentColor); /* Kolor etykiety po wprowadzeniu tekstu */
+        color: var(--accentColor);
       }
 
       @media (prefers-color-scheme: dark) {

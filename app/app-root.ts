@@ -21,12 +21,13 @@ import { WebComponent, CustomElement, styles, template, Input, EventListener, on
      position: fixed;
      bottom: 0;
      font-size: 10px;
+     z-index: -1;
     }
    }
   `
  }
  
- appVersion = "0.0.1-cherry_pie.build_0410242230"
+ appVersion = "0.0.2-apple_pie.build_0510241015";
  
  @template() static appTemplate() {
   return `
