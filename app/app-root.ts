@@ -34,11 +34,7 @@ export class AppRoot extends CustomElement {
   return `
    <app-hello></app-hello>
    <app-logo></app-logo>
-   <span>
-    edit
-    <mark>app-hello.ts</mark> or
-    <mark>app-logo.ts</mark> to change content 
-   </span>
+   <app-repo-list></app-repo-list>
   `
  }
 }

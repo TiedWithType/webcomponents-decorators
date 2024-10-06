@@ -16,6 +16,6 @@ export class AppLogo extends CustomElement {
  }
  
  @template() static appTemplate() {
-  return `<img src="${this.src}" alt="logo" />`
+  return `<img loading="lazy" src="${this.src}" alt="logo" />`
  }
 }
