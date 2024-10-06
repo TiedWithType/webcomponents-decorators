@@ -27,7 +27,7 @@ import { WebComponent, CustomElement, styles, template, Input, EventListener, on
   `
  }
  
- appVersion = "1.0.0-NewYork";
+ appVersion = "1.0.1-NewYork";
  
  @template() static appTemplate() {
   return `

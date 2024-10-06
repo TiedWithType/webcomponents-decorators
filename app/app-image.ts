@@ -16,10 +16,10 @@ export class AppImage extends CustomElement {
   });
  }
 
- @onInit() readyEvent() {
+ @onInit() readyEvent(e) {
   this.settings.subscribe(async (result, key) => {
    if (key != "imageUrl") return;
-   this.src = await this.imageValid(result)
+   this.src = await this.imageValid(result);
   });
  }
  
