@@ -9,7 +9,7 @@ export class AppRoot extends CustomElement {
     display: grid;
     grid-template-columns: 18.75rem;
     place-items: center;
-    place-value: center;
+    place-content: center;
     user-select: none;
     
     @media screen and (width > 39.25rem) {
