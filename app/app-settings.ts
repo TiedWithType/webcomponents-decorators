@@ -78,7 +78,7 @@ static appStyle() {
  
  @EventListener("input") atInput({ target }) {
   this.settings[target.dataset.attr] = target.value;
-  //this.settings.imageUrl = this.settings.seedUrl;
+  this.settings.imageUrl = this.settings.fixedUrl();
  }
  
  @template() static appTemplate() {

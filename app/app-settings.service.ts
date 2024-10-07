@@ -16,7 +16,7 @@ import fallbackImage from "/assets/fallback.webp";
    this.size = 1024;
   }
   
-  this.seed = seed;
+  seed && (this.seed = seed);
   const url =
   `${this.baseUrl}/${this.seed}/${this.size}.webp`;
 
